@@ -6,11 +6,15 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import net.p316.newscrawler.util.URLGenerator;
+
 import java.io.IOException;
 
 public class App {
 	public static void main(String[] args) throws IOException {
-        String url = "http://news.naver.com/main/list.nhn?mode=LSD&mid=sec&sid1=100&listType=title&date=20161013";
+		URLGenerator URLgen = new URLGenerator();
+		
+        String url = "http://news.naver.com/main/list.nhn?mode=LSD&listType=title&mid=sec&sid1=100&date=20161013";
         print("Fetching %s...", url);
 
         Document doc = Jsoup.connect(url).get();
