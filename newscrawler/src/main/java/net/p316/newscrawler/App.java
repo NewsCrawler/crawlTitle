@@ -18,10 +18,27 @@ public class App {
         Document doc = Jsoup.connect(url).get();
         
         Elements links = doc.select("#main_content .type02 a[href]");
+        Elements company = doc.select("#main_content .type02 .writing");
+        Elements date = doc.select("#main_content .type02 .date");
         
-        print("\nLinks: (%d)", links.size());
+        print("\nLink: (%d)", links.size());
         for (Element link : links) {
-            print(" * a: <%s>  (%s)", link.attr("abs:href"), trim(link.text(), 35));
+            print("%s", link.attr("abs:href"));
+        }
+        
+        print("\nTitle: (%d)", links.size());
+        for (Element link : links) {
+            print("%s", link.text());
+        }
+        
+        print("\nCompany: (%d)", company.size());
+        for(Element comp : company) {
+        	print("%s", comp.text());
+        }
+        
+        print("\nDate: (%d)", date.size());
+        for(Element day : date) {
+        	print("%s", day.text());
         }
     }
 
