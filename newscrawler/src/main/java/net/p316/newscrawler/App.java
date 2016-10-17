@@ -13,8 +13,8 @@ import java.io.IOException;
 public class App {
 	public static void main(String[] args) throws IOException {
 		URLGenerator URLgen = new URLGenerator();
-		
-        String url = "http://news.naver.com/main/list.nhn?mode=LSD&listType=title&mid=sec&sid1=100&date=20161013";
+        String url = URLgen.getTargetUrl(105);
+        
         print("Fetching %s...", url);
 
         Document doc = Jsoup.connect(url).get();
