@@ -5,13 +5,13 @@ public class URLGenerator {
 	private String Y = "";
 	private String M = "";
 	private String D = "";
-	private int page;
+	private String page = "";
 	
 	public URLGenerator(){
-		newsURL = "http://news.naver.com/main/list.nhn?mode=LSD&listType=title";
+		newsURL = "http://news.naver.com/main/list.nhn?mid=shm&mode=LS2D&listType=title";
 		Y = "2016";
-		M = "10";
-		D = "18";
+		M = "1";
+		D = "1";
 	}
 	
 	public void setDate(int y, int m, int d){
@@ -32,10 +32,15 @@ public class URLGenerator {
 		D = String.format("%02d", d);
 	}
 	
+	public void setPage(int p){
+		page = Integer.toString(p);
+	}
+	
 	// main
 	public String getTargetUrl(){
 		String targetUrl = newsURL;
-		targetUrl += "&" + Y.toString() + M.toString() + D.toString();
+		targetUrl += "&" + "date=" + Y.toString() + M.toString() + D.toString();
+		targetUrl += "&" + "page=" + page;
 		return targetUrl;
 	};
 	
@@ -44,6 +49,7 @@ public class URLGenerator {
 		String targetUrl = newsURL;
 		targetUrl += "&" + "date=" + Y.toString() + M.toString() + D.toString();
 		targetUrl += "&" + "sid1=" + Integer.toString(sid1);
+		targetUrl += "&" + "page=" + page;
 		return targetUrl;
 	};
 	
@@ -52,6 +58,7 @@ public class URLGenerator {
 		String targetUrl = newsURL;newsURL += "&" + "date=" + Y.toString() + M.toString() + D.toString();
 		targetUrl += "&" + "sid1=" + Integer.toString(sid1);
 		targetUrl += "&" + "sid2=" + Integer.toString(sid2);
+		targetUrl += "&" + "page=" + page;
 		return targetUrl;
 	};
 }
