@@ -45,7 +45,7 @@ public class App {
 	        	String title = link.text();
     			String comp = item.select(".writing").text();
 	        	String day = item.select(".date").text();
-	        	print("%s, %s, %s, %s", href, title, comp, day);
+	        	print("%s\t%s\t%s\t%s", href, title, comp, day);
 	        }
 	        
 	        /*
