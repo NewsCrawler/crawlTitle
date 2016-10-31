@@ -6,6 +6,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import net.p316.newscrawler.util.MySQLConnector;
 import net.p316.newscrawler.util.URLGenerator;
 import net.p316.newscrawler.vo.Title;
 
@@ -25,9 +26,13 @@ public class App {
 		
 		ArrayList<Title> titles = new ArrayList<Title>();
 		
+		MySQLConnector mycon = new MySQLConnector();
+		
+		mycon.testConn();
+		
 		// get last page
 		// page=999 >> .paging strong:last
-		for(int i = 1; i <= 5; i++){
+		for(int i = 1; i <= 3; i++){
 			URLgen.setPage(i);
 			url = URLgen.getTargetUrl(s1, s2);
 			
