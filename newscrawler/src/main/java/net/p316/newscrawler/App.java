@@ -19,8 +19,8 @@ public class App {
 
 		int s1 = 100;
 		int s2 = 269;
-		URLgen.setMonth(10);
-		URLgen.setDay(31);
+		URLgen.setMonth(9);
+		URLgen.setDay(30);
 		URLgen.setPage(1);
 		String url = URLgen.getTargetUrl();
 		
@@ -32,7 +32,7 @@ public class App {
 		
 		// get last page
 		// page=999 >> .paging strong:last
-		for(int i = 1; i <= 3; i++){
+		for(int i = 1; i <= 1; i++){
 			URLgen.setPage(i);
 			url = URLgen.getTargetUrl(s1, s2);
 			
@@ -43,7 +43,8 @@ public class App {
 	        Elements company = doc.select("#main_content .type02 .writing");
 	        Elements date = doc.select("#main_content .type02 .date");
 	        
-	        //print("\nItems: (%d)", items.size());
+	        print(url);
+	        
 	        for(Element item : items){
 	        	Elements link = item.select("a[href]");
 	        	String href = link.attr("abs:href");
@@ -51,6 +52,8 @@ public class App {
     			String comp = item.select(".writing").text();
 	        	String day = item.select(".date").text();
 	        	print("%s\t%s\t%s\t%s", href, title, comp, day);
+	        	
+	        	mycon.simpleInsertTitle(href, title, comp, day);
 	        }
 	        
 	        /*

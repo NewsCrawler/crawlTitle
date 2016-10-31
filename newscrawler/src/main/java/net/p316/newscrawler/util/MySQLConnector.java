@@ -22,8 +22,24 @@ public class MySQLConnector {
 	   }
    }
    
-   public void simpleInsertTitle(){
-	   
+   public void simpleInsertTitle(String _href, String _title, String _comp, String _day){
+	   Statement stmt = null;
+	   ResultSet rs = null;
+	   try{
+		   stmt = conn.createStatement();
+		   stmt.execute("INSERT INTO `nc_title`"
+		   		+ "(`idx`, `idx_category`, `url`, `title`, `company`, `date`)"
+		   		+ "VALUES (NULL,"
+		   		+ "'1',"
+		   		+ "'" + _href + "',"
+		   		+ "'" + _title + "',"
+		   		+ "'" + _comp + "',"
+		   		+ "'" + _day + "')");
+	   } catch(Exception ex){
+		   
+	   } finally {
+		   
+	   }
    }
    
    public void testConn(){
@@ -31,7 +47,7 @@ public class MySQLConnector {
 	   ResultSet rs = null;
 	   try{
 		   stmt = conn.createStatement();
-		   stmt.execute("INSERT INTO `nc_title` (`idx`, `idx_category`, `url`, `title`, `company`, `date`) VALUES (NULL, '1', 'http://p316.net', '박현준ㅁㅇㄴㄹㅇㅁㄴasdfsadfas 한글이 왜 안될까', '동국대학교', CURRENT_DATE())");
+		   stmt.execute("INSERT INTO `nc_title` (`idx`, `idx_category`, `url`, `title`, `company`, `date`) VALUES (NULL, '1', 'http://p316.net', '=====절취선=====', '동국대학교', CURRENT_TIME())");
 	   } catch(Exception ex){
 		   
 	   } finally {

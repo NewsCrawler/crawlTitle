@@ -55,7 +55,8 @@ public class URLGenerator {
 	
 	// sid1, sid2
 	public String getTargetUrl(int sid1, int sid2){
-		String targetUrl = newsURL;newsURL += "&" + "date=" + Y.toString() + M.toString() + D.toString();
+		String targetUrl = newsURL;
+		targetUrl += "&" + "date=" + Y.toString() + M.toString() + D.toString();
 		targetUrl += "&" + "sid1=" + Integer.toString(sid1);
 		targetUrl += "&" + "sid2=" + Integer.toString(sid2);
 		targetUrl += "&" + "page=" + page;
