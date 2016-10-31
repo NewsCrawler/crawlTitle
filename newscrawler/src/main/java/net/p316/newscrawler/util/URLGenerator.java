@@ -8,7 +8,7 @@ public class URLGenerator {
 	private String page = "";
 	
 	public URLGenerator(){
-		newsURL = "http://news.naver.com/main/list.nhn?mid=shm&mode=LS2D&listType=title";
+		newsURL = "http://news.naver.com/main/list.nhn?mid=sec&mode=LS2D&listType=title";
 		Y = "2016";
 		M = "1";
 		D = "1";

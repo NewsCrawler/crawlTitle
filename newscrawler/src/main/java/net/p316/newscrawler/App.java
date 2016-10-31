@@ -16,10 +16,10 @@ public class App {
 	public static void main(String[] args) throws IOException {
 		URLGenerator URLgen = new URLGenerator();
 
-		int s1 = 105;
-		int s2 = 230;
+		int s1 = 100;
+		int s2 = 269;
 		URLgen.setMonth(10);
-		URLgen.setDay(17);
+		URLgen.setDay(31);
 		URLgen.setPage(1);
 		String url = URLgen.getTargetUrl();
 		
@@ -27,7 +27,7 @@ public class App {
 		
 		// get last page
 		// page=999 >> .paging strong:last
-		for(int i = 1; i <= 11; i++){
+		for(int i = 1; i <= 5; i++){
 			URLgen.setPage(i);
 			url = URLgen.getTargetUrl(s1, s2);
 			
