@@ -15,14 +15,23 @@ import java.util.ArrayList;
 
 public class App {
 	public static void main(String[] args) throws IOException {
+	
 		URLGenerator URLgen = new URLGenerator();
+		//URLgen에 URLGenerator 객체 생성
 
 		int s1 = 100;
+		//category를 저장하는 변수 s1에 100 저장(정치카테고리로 지정)
 		int s2 = 269;
-		URLgen.setMonth(9);
-		URLgen.setDay(30);
+		//sub_category를 저장하는 변수 s2에 269 저장(정치일반으로 부카테고리 지정)
+		URLgen.setMonth(11);
+		//10월
+		URLgen.setDay(1);
+		//30일
 		URLgen.setPage(1);
+		//1페이지
+		
 		String url = URLgen.getTargetUrl();
+		//url에 URLgen객체의 getTargetUrl을 저장
 		
 		ArrayList<Title> titles = new ArrayList<Title>();
 		
@@ -80,7 +89,10 @@ public class App {
 		}
 		
 		for(Title t : titles){
+			//불러온 title이 있을 경우
+			
 			print("%s,%s,%s,%s", t.getUrl(), t.getDate().toString(), t.getTitle(), t.getCompany());
+		   //뉴스 기사의 Url, 기사의 날짜와 시간, 기사제목, 뉴스회사 출력
 		}
     }
 

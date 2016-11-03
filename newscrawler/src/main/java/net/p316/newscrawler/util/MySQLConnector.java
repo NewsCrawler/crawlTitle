@@ -3,11 +3,14 @@ package net.p316.newscrawler.util;
 import java.sql.*;
 
 public class MySQLConnector {
-   static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
+   static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
    static final String DB_URL = "jdbc:mysql://news.p316.net/news_crawler";
+   //string형 변수 DB_URL에 DB연동을 할 주소(URL)저장
    
    static final String USER = "crawler";
+   //String형 변수 USER에 아이디 crawler저장
    static final String PASS = "4X\"Zd@JaTs\\Yk<c]";
+   //String형 변수 PASS에 비밀번호 저장
    
    private DriverManager driverManager;
    private Connection conn = null;
