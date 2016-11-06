@@ -19,6 +19,7 @@ public class App {
 		URLGenerator URLgen = new URLGenerator();
 		//URLgen에 URLGenerator 객체 생성
 
+		
 		int s1 = 100;
 		//category를 저장하는 변수 s1에 100 저장(정치카테고리로 지정)
 		int s2 = 269;
@@ -29,6 +30,37 @@ public class App {
 		//30일
 		URLgen.setPage(1);
 		//1페이지
+      
+	
+		int argcount=args.length;
+		if(argcount==1) //sid1만 지정
+			s1=Integer.parseInt(args[0]);
+		else if(argcount==2) //sid1, sid2 지정
+		{
+			s1=Integer.parseInt(args[0]);
+			s2=Integer.parseInt(args[1]);
+		}
+		else if(argcount==3) //sid1, MM, DD 지정
+		{
+			s1=Integer.parseInt(args[0]);
+			URLgen.setMonth(Integer.parseInt(args[1]));
+		}
+		else if(argcount==4) //sid1, sid2, MM, dd 지정
+		{
+			s1=Integer.parseInt(args[0]);
+			s2=Integer.parseInt(args[1]);
+			URLgen.setMonth(Integer.parseInt(args[2]));
+			URLgen.setDay(Integer.parseInt(args[3]));
+		}
+		else if(argcount==5) //sid1, sid2, MM, dd, page 지정
+		{
+			s1=Integer.parseInt(args[0]);
+			s2=Integer.parseInt(args[1]);
+			URLgen.setMonth(Integer.parseInt(args[2]));
+			URLgen.setDay(Integer.parseInt(args[3]));
+			URLgen.setPage(Integer.parseInt(args[4]));
+		}
+		
 		
 		String url = URLgen.getTargetUrl();
 		//url에 URLgen객체의 getTargetUrl을 저장
@@ -43,7 +75,32 @@ public class App {
 		// page=999 >> .paging strong:last
 		for(int i = 1; i <= 1; i++){
 			URLgen.setPage(i);
-			url = URLgen.getTargetUrl(s1, s2);
+			//url = URLgen.getTargetUrl(s1, s2);
+		
+			if(argcount==1) //sid1만 지정
+			{
+				url = URLgen.getTargetUrl(s1);
+			}
+			else if(argcount==2) //sid1, sid2 지정
+			{
+				url = URLgen.getTargetUrl(s1, s2);
+			}
+			else if(argcount==3) //sid1, MM, DD 지정
+			{
+				url = URLgen.getTargetUrl(s1, s2);
+			}
+			else if(argcount==4) //sid1, sid2, MM, DD 지정
+			{
+				url = URLgen.getTargetUrl(s1, s2);
+			}
+			else if(argcount==5) //sid1, sid2, MM, dd, page 지정
+			{
+				URLgen.setPage(Integer.parseInt(args[4]));
+				url = URLgen.getTargetUrl(s1, s2);
+				
+			}
+			
+			
 			
 			Document doc = Jsoup.connect(url).get();
 	        
@@ -94,6 +151,8 @@ public class App {
 			print("%s,%s,%s,%s", t.getUrl(), t.getDate().toString(), t.getTitle(), t.getCompany());
 		   //뉴스 기사의 Url, 기사의 날짜와 시간, 기사제목, 뉴스회사 출력
 		}
+		
+		
     }
 
     private static void print(String msg, Object... args) {
@@ -106,4 +165,7 @@ public class App {
         else
             return s;
     }
+    
+
+    
 }
