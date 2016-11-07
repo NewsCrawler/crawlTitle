@@ -44,6 +44,7 @@ public class App {
 		{
 			s1=Integer.parseInt(args[0]);
 			URLgen.setMonth(Integer.parseInt(args[1]));
+			URLgen.setDay(Integer.parseInt(args[2]));
 		}
 		else if(argcount==4) //sid1, sid2, MM, dd 지정
 		{
