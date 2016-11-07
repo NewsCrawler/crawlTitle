@@ -12,24 +12,26 @@ import net.p316.newscrawler.vo.Title;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.*;
 
 public class App {
 	public static void main(String[] args) throws IOException {
 	
 		URLGenerator URLgen = new URLGenerator();
 		//URLgen에 URLGenerator 객체 생성
-
+		
+		Calendar cal = Calendar.getInstance ( );//오늘 날짜를 기준으로 날짜불러오기
 		
 		int s1 = 100;
 		//category를 저장하는 변수 s1에 100 저장(정치카테고리로 지정)
-		int s2 = 269;
-		//sub_category를 저장하는 변수 s2에 269 저장(정치일반으로 부카테고리 지정)
-		URLgen.setMonth(11);
-		//10월
-		URLgen.setDay(1);
-		//30일
+		int s2 = 264;
+		//sub_category를 저장하는 변수 s2에 264 저장(정치일반으로 부카테고리 지정)
+		URLgen.setMonth(cal.get ( cal.MONTH )+1);
+		//Month
+		URLgen.setDay(cal.get ( cal.DATE ));
+		//Date
 		URLgen.setPage(1);
-		//1페이지
+		//1페이지 초기화
       
 	
 		int argcount=args.length;
