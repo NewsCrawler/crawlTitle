@@ -35,6 +35,7 @@ public class App {
       
 	
 		int argcount=args.length;
+		
 		if(argcount==1) //sid1만 지정
 			s1=Integer.parseInt(args[0]);
 		else if(argcount==2) //sid1, sid2 지정
@@ -76,11 +77,27 @@ public class App {
 		
 		// get last page
 		// page=999 >> .paging strong:last
-		for(int i = 1; i <= 1; i++){
+		breakOut:
+		for(int i = 1; ; i++){
+			
 			URLgen.setPage(i);
+			url=URLgen.getTargetUrl();
 			//url = URLgen.getTargetUrl(s1, s2);
 		
-			if(argcount==1) //sid1만 지정
+			/*
+			Document doc = Jsoup.connect(url).get();
+	        
+			Elements items = doc.select("#main_content .type02 li");
+	        Elements links = doc.select("#main_content .type02 a[href]");
+	        Elements company = doc.select("#main_content .type02 .writing");
+	        Elements date = doc.select("#main_content .type02 .date");
+	        Elements pageCheck = doc.select(".paging strong");
+	        // String strongpagenum=pageCheck.text();
+	        
+	        print(url);
+	        */
+	        
+	        if(argcount==1) //sid1만 지정
 			{
 				url = URLgen.getTargetUrl(s1);
 			}
@@ -102,17 +119,24 @@ public class App {
 				url = URLgen.getTargetUrl(s1, s2);
 				
 			}
-			
-			
-			
-			Document doc = Jsoup.connect(url).get();
+	        Document doc = Jsoup.connect(url).get();
 	        
 			Elements items = doc.select("#main_content .type02 li");
 	        Elements links = doc.select("#main_content .type02 a[href]");
 	        Elements company = doc.select("#main_content .type02 .writing");
 	        Elements date = doc.select("#main_content .type02 .date");
+	        Elements pageCheck = doc.select(".paging strong");
+	        // String strongpagenum=pageCheck.text();
 	        
 	        print(url);
+	        
+	        String strongpagenum=pageCheck.text();
+	        print("스트롱 페이지 : %s 랑 i : %d \n", strongpagenum,i);
+	        
+	        if(i!=Integer.parseInt(strongpagenum))
+	        	break breakOut;
+	                	
+	        
 	        
 	        for(Element item : items){
 	        	Elements link = item.select("a[href]");
@@ -125,27 +149,8 @@ public class App {
 	        	mycon.simpleInsertTitle(href, title, comp, day);
 	        }
 	        
-	        /*
-	        print("\nLink: (%d)", links.size());
-	        for (Element link : links) {
-	        	print("%s", link.attr("abs:href"));
-	        }
 	        
-	        print("\nTitle: (%d)", links.size());
-	        for (Element link : links) {
-	        	print("%s", link.text());
-	        }
-	        
-	        print("\nCompany: (%d)", company.size());
-	        for(Element comp : company) {
-	        	print("%s", comp.text());
-	        }
-	        
-	        print("\nDate: (%d)", date.size());
-	        for(Element day : date) {
-	        	print("%s", day.text());
-	        }
-	        */
+	       
 		}
 		
 		for(Title t : titles){
@@ -172,3 +177,4 @@ public class App {
 
     
 }
+
