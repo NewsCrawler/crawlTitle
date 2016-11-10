@@ -107,7 +107,7 @@ public class App {
 			}
 			else if(argcount==3) //sid1, MM, DD 지정
 			{
-				url = URLgen.getTargetUrl(s1, s2);
+				url = URLgen.getTargetUrl(s1);
 			}
 			else if(argcount==4) //sid1, sid2, MM, DD 지정
 			{

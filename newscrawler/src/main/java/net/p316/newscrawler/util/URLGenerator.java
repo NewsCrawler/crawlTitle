@@ -16,7 +16,7 @@ public class URLGenerator {
 	
 	public URLGenerator(){
 		 //URL의 정보(newsURL와 Y,M,D)를 초기화해주는 메소드 URLGenerator
-		newsURL = "http://news.naver.com/main/list.nhn?mid=sec&mode=LS2D&listType=title";
+		newsURL = "http://news.naver.com/main/list.nhn?mid=sec&mode=LSD&listType=title";
 		 //네이버 뉴스의 속보 홈의 url 저장
 		Y = "2016";
 		 //Y를 2016년으로 초기화
