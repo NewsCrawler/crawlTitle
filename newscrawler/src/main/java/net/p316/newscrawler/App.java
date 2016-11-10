@@ -77,7 +77,7 @@ public class App {
 		
 		// get last page
 		// page=999 >> .paging strong:last
-		breakOut:
+		
 		for(int i = 1; ; i++){
 			
 			URLgen.setPage(i);
@@ -134,7 +134,7 @@ public class App {
 	        print("스트롱 페이지 : %s 랑 i : %d \n", strongpagenum,i);
 	        
 	        if(i!=Integer.parseInt(strongpagenum))
-	        	break breakOut;
+	        	break;
 	                	
 	        
 	        
