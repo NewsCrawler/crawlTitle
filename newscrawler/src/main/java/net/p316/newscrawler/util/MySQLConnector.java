@@ -50,7 +50,6 @@ public class MySQLConnector {
 	   ResultSet rs = null;
 	   try{
 		   stmt = conn.createStatement();
-		   stmt.execute("INSERT INTO `nc_title` (`idx`, `idx_category`, `url`, `title`, `company`, `date`) VALUES (NULL, '1', 'http://p316.net', '=====절취선=====', '동국대학교', CURRENT_TIME())");
 	   } catch(Exception ex){
 		   
 	   } finally {

@@ -119,7 +119,21 @@ public class App {
 				url = URLgen.getTargetUrl(s1, s2);
 				
 			}
-	        Document doc = Jsoup.connect(url).get();
+	        
+	        Document doc = null;
+	        int j = 0;
+	        for (j = 0; j < 99; j++) {
+	            try {
+	                doc = Jsoup.connect(url).get();
+	                break;
+	            } catch (IOException e) {
+	                continue;
+	            }
+	        }
+	        if(j > 0){
+	        	print("!!!!WARNING!!!! " + j +" 번 재시도가 있었습니");
+	        }
+	        
 	        
 			Elements items = doc.select("#main_content .type02 li");
 	        Elements links = doc.select("#main_content .type02 a[href]");
